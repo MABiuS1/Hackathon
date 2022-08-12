@@ -1,20 +1,9 @@
 const express = require("express");
-const routes = express.Router();
-
-const MajorRoutes = require("./models/major");
-const StudentRoutes = require("./models/student");
-
-routes.use("/student",StudentRoutes);
-routes.use("/majors",MajorRoutes);
-
-module.exports = routes;
-
-
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-
+const routes = require("./routes/index.js")
 
 const app = express();
 app.use(cors());
@@ -25,7 +14,6 @@ dotenv.config();
 
 
 const PORT = process.env.HOST || 8000;
-
 
 mongoose.connect(process.env.MONGO_HOST,{
     useNewUrlParser: true,
