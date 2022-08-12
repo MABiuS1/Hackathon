@@ -17,14 +17,13 @@ const PORT = process.env.HOST || 8000;
 
 mongoose.connect(process.env.MONGO_HOST,{
     useNewUrlParser: true,
-    useUnifiedTopologu: true,
 });
 
 const db = mongoose.connection;
 
 db.on('error',(err) => console.error(err));
 
-db.once('open',() => comsole.log(`Connected Database at : ${db.host}`));
+db.once('open',() => console.log(`Connected Database at : ${db.host}`));
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin","*");
